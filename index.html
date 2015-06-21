@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script  type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-md5.js"></script>
+<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha1.js"></script>
+<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha256.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+
+
+
+	$(document).ready(function(){
+
+      
+    $(".subt").click(function(){
+    	  
+        var text = document.getElementById('text').value;
+		var key = document.getElementById('key').value;
+	    var hashes = document.getElementById('hashes').value;
+	    var hsha2 = CryptoJS.HmacSHA256(text,key);
+    	var hmd5 = CryptoJS.HmacMD5(text,key);
+    	if (hashes == 'MD5') {
+    		
+    	document.getElementById("demo").innerHTML = '-'+hmd5+'I';
+    	
+    	}else if(hashes == 'SHA256'){
+
+		document.getElementById("demo").innerHTML = '-'+hsha2+'I';
+    	};
+    	
+
+
+
+
+    });
+});
+
+	
+
+    
+</script>
+
+
+
+</head>
+<body>
+Text to hash	<br><input id="text" type="text" ><br>
+Magic Key 	<br><input id="key" type="text" ><br>
+<select id="hashes">
+	<option value="MD5">MD5</option>
+	<option value="SHA256">SHA256</option>
+	
+</select>
+<br>
+
+
+<button id="btn3" class="subt">Set Value</button>
+<br>
+<p id="demo"></p>
+
+
+</body>
+</html>
